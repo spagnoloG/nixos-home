@@ -54,6 +54,7 @@ in {
       okular
       conda
       joplin-desktop
+      gnumake
       # Tools / File managenemt
       sshpass
       gparted
@@ -80,6 +81,7 @@ in {
       neofetch
       htop-vim
       # Programming languages
+      python311
       ansible
       # Database connection tools
       mysql

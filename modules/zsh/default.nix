@@ -31,6 +31,7 @@ in {
         hg = "history | grep";
         ss = "grc ss";
         tree = "eza --tree";
+	ssh = "kitten ssh";
         rebuild-os =
           "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.config/home-manager#yoga --impure";
       };

@@ -11,7 +11,7 @@ in {
     services.kanshi = {
       enable = true;
 
-      systemdTarget = "hyprland-session.target";
+      systemdTarget = "xdg-desktop-portal-hyprland.service";
 
       profiles = {
         profile1 = {
@@ -31,7 +31,7 @@ in {
           outputs = [{
             criteria = "California Institute of Technology 0x1410 Unknown";
             mode = "3072x1920@120Hz";
-            scale = 1.0;
+            scale = 1.5;
           }];
         };
 

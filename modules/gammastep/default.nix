@@ -9,7 +9,7 @@ in {
     home.packages = with pkgs; [ gammastep ];
 
     services.gammastep = {
-      enable = false;
+      enable = true;
       provider = "manual";
       latitude = 46.0569;
       longitude = 14.5058;
