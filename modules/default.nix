@@ -18,5 +18,7 @@
     ./vscode
     ./tmux
     ./starship
+    ./dconf
+    ./nvim
   ];
 }

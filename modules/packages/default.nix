@@ -26,7 +26,6 @@ in {
       git
       file
       wget
-      neovim
       gcc
       cmake
       gtklock
@@ -153,9 +152,9 @@ in {
       ddrescue
       ripgrep
       # Browsers
-      brave
       firefox
       google-chrome
+      brave
       # colored output in terminal
       grc
       # Fonts

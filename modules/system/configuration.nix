@@ -17,6 +17,9 @@
 
   environment.etc.openvpn.source = "${pkgs.update-resolv-conf}/libexec/openvpn";
 
+  # Docker
+  virtualisation.docker.enable = true;
+
   # Laptop-specific packages (the other ones are installed in `packages.nix`)
   environment.systemPackages = with pkgs; [
     acpi
@@ -131,7 +134,8 @@
   # Set up user and enable sudo
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "input" "wheel" "networkmanager" "libvirtd" "wireshark" ];
+    extraGroups =
+      [ "input" "wheel" "networkmanager" "libvirtd" "wireshark" "docker" ];
     initialHashedPassword =
       "$6$wqCHereET3WM6UIA$XeJIgGkmO2/zAkktN2JCx5hLNS3kSj6seVQBdSWoMeJ5MOrIha6B/HiDjHI4oKDKYhYVwjgQFqGpncU6OI7Ud/"; # password: d3fault
     shell = pkgs.zsh;
@@ -192,11 +196,10 @@
     };
   };
 
-  virtualisation.waydroid.enable =
-    true; # For mobile app pentesting TODO: Move to module.
   programs.adb.enable = true;
 
   services.blueman.enable = true;
   # Do not touch
   system.stateVersion = "23.11";
+
 }

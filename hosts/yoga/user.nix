@@ -18,5 +18,7 @@
     vscode.enable = true;
     tmux.enable = true;
     starship.enable = true;
+    dconf.enable = true;
+    nvim.enable = true;
   };
 }
