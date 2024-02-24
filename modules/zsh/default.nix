@@ -31,7 +31,6 @@ in {
         hg = "history | grep";
         ss = "grc ss";
         tree = "eza --tree";
-        ssh = "kitten ssh";
         vi = "nvim";
         vim = "nvim";
         rebuild-os =

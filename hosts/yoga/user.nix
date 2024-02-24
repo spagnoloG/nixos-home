@@ -20,5 +20,6 @@
     starship.enable = true;
     dconf.enable = true;
     nvim.enable = true;
+    alacritty.enable = true;
   };
 }

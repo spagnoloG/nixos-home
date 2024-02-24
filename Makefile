@@ -16,7 +16,8 @@ cleanup-os:
 	@sudo nix-store --optimize
 	@sudo nix-env --list-generations --profile $(SYSTEM_PACKAGES_PATH)
 
-lint:
-	@echo "Linting Nix files..."
+format:
+	@echo "Formatting Nix & Lua files..."
 	@find . -type f -iname "*.nix" -exec nixfmt {} \;
+	@find . -type f -iname "*.lua" -exec lua-format --in-place {} \;
 

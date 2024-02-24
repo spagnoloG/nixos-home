@@ -27,10 +27,10 @@ Rebuilding:
 make rebuild-os
 ```
 
-Formatting all `*nix` files:
+Formatting all `*nix`  and `*lua` files:
 
 ```bash
-make  lint
+make format 
 ```
 
 Cleaning up old generations:

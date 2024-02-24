@@ -20,5 +20,6 @@
     ./starship
     ./dconf
     ./nvim
+    ./alacritty
   ];
 }

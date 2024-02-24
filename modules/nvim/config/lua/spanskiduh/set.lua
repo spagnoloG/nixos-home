@@ -17,7 +17,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = true 
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
@@ -41,6 +41,6 @@ vim.cmd.colorscheme("tokyonight-night")
 vim.cmd('autocmd FocusLost, BufLeave, BufHidden * silent! wall')
 
 -- Copilot parse yaml
-vim.cmd('filetype on')  -- Enable filetype detection
-vim.cmd('autocmd BufRead,BufNewFile *.yml,*.yaml set filetype=yaml')  -- Set the filetype for YAML files
+vim.cmd('filetype on') -- Enable filetype detection
+vim.cmd('autocmd BufRead,BufNewFile *.yml,*.yaml set filetype=yaml') -- Set the filetype for YAML files
 vim.g.copilot_filetypes = {yaml = true, yml = true, markdown = true}

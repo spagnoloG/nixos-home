@@ -29,9 +29,9 @@ in {
 
         yoga = {
           outputs = [{
-            criteria = "California Institute of Technology 0x1410 Unknown";
+            criteria = "eDP-1";
             mode = "3072x1920@120Hz";
-            scale = 1.5;
+            scale = 1.3;
           }];
         };
 
@@ -114,12 +114,11 @@ in {
         hs_22 = {
           outputs = [
             {
-              criteria =
-                "Philips Consumer Electronics Company PHL27M1N3200Z UK02329015881";
-              mode = "1920x1080@144";
+              criteria = "DP-2";
+              mode = "1920x1080@120";
             }
             {
-              criteria = "California Institute of Technology 0x1410 Unknown";
+              criteria = "eDP-1";
               status = "disable";
             }
           ];

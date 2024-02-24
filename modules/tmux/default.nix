@@ -13,11 +13,12 @@ in {
 
       extraConfig = ''
         # Alacritty term support
-        #set -g default-terminal "tmux-256color"
-        #set -sg terminal-overrides ",*:RGB"
+        set -g default-terminal "tmux-256color"
+        set -sg terminal-overrides ",*:RGB"
 
         # Kitty terminal
-        set -ag terminal-overrides ",xterm-kitty:Tc"
+        #set -ag terminal-overrides ",xterm-kitty:Tc"
+        #set-option -sa terminal-features ',XXX:RGB'
 
         # Enable vim keys
         set-window-option -g mode-keys vi
@@ -40,7 +41,7 @@ in {
         # Increase history size
         set-option -g history-limit 10000
 
-        # LazyNvim option
+        # NeoVim
         set-option -sg escape-time 10
 
         # Colors
