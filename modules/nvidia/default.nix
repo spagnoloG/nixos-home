@@ -8,9 +8,6 @@
     cudatoolkit
   ];
 
-  services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
-  boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
-
   # Enable OpenGL
   hardware.opengl = {
     enable = true;

@@ -15,6 +15,13 @@ in {
         vscodevim.vim
         yzhang.markdown-all-in-one
         github.copilot
+        ms-vscode-remote.remote-ssh
+        ms-vsliveshare.vsliveshare
+        redhat.java
+        rust-lang.rust-analyzer
+        ms-toolsai.jupyter
+        ms-python.python
+        jnoortheen.nix-ide
       ];
     };
 

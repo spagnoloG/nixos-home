@@ -1,5 +1,5 @@
 
-.PHONY: rebuild-os lint cleanup-os
+.PHONY: rebuild-os format cleanup-os
 
 FLAKE_PATH := /home/spagnologasper/.config/home-manager#yoga
 SYSTEM_PACKAGES_PATH := /nix/var/nix/profiles/system

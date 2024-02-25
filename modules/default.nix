@@ -21,5 +21,6 @@
     ./dconf
     ./nvim
     ./alacritty
+    ./brave
   ];
 }

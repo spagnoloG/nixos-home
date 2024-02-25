@@ -12,23 +12,13 @@ in {
       enable = true;
       shellAliases = {
         md-notes = "cd ~/Documents/md-notes/ && nvim .";
-        randwall = "feh --bg-scale --randomize ~/pictures/wallpapers/*";
-        zapiski = "~/Documents/faks_git/FRI-ZAPISKI";
-        ctf = "cd ~/Documents/ctf/2022";
-        faks = "cd ~/Documents/faks";
-        faks-git = "cd ~/Documents/faks_git";
         rm = "rm -i";
         night = "brightnessctl s 1%";
-        nightlock = "swaylock -c 000000";
-        hsrv = "ssh hsrv";
-        rs = "export QT_QPA_PLATFORM=xcb; rstudio-bin --no-sandbox &";
         rot13 = "tr 'A-Za-z' 'N-ZA-Mn-za-m'";
-        nix-update = "nix-channel --update && nix-env -u";
         ls = "lsd";
         sus = "systemctl suspend";
         sur = "systemctl reboot";
         sup = "power off";
-        hg = "history | grep";
         ss = "grc ss";
         tree = "eza --tree";
         vi = "nvim";

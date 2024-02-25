@@ -46,6 +46,7 @@ in {
       binutils
       zlib
       jdk
+      virt-manager
       # Development
       dbeaver
       libreoffice
@@ -154,20 +155,8 @@ in {
       # Browsers
       firefox
       google-chrome
-      brave
       # colored output in terminal
       grc
-      # Fonts
-      fira-code
-      fira
-      cooper-hewitt
-      ibm-plex
-      jetbrains-mono
-      iosevka
-      spleen
-      fira-code-symbols
-      powerline-fonts
-      nerdfonts
     ];
   };
 }

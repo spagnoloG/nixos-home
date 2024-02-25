@@ -13,6 +13,7 @@ in {
       hyprland-protocols
       wlogout
       swayidle
+      wlsunset
     ];
 
     home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;

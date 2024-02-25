@@ -40,10 +40,17 @@ in {
 
       extraConfig = {
         merge.conflictstyle = "diff3";
+        core = { editor = "nvim"; };
+
         push.default = "current";
         pull.rebase = true;
         init.defaultBranch = "master";
-        url."git@github.com:".insteadOf = "https://github.com/";
+        url = {
+          "ssh://git@bitbucket.org/" = {
+            insteadOf = "https://bitbucket.org/";
+          };
+          "ssh://git@github.com/" = { insteadOf = "https://github.com/"; };
+        };
         branch.sort = "-committerdate";
         tag.sort = "-v:refname";
       };

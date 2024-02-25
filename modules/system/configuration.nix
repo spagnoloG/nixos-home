@@ -20,17 +20,6 @@
   # Docker
   virtualisation.docker.enable = true;
 
-  # Laptop-specific packages (the other ones are installed in `packages.nix`)
-  environment.systemPackages = with pkgs; [
-    acpi
-    tlp
-    git
-    pciutils
-    greetd.tuigreet
-    virt-manager
-    glib-networking
-  ];
-
   services.greetd = {
     enable = true;
     settings = {
@@ -55,14 +44,21 @@
   programs.hyprland.xwayland.enable = true;
 
   virtualisation.libvirtd.enable = true;
-
   fonts = {
     packages = with pkgs; [
       jetbrains-mono
       roboto
       openmoji-color
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      (nerdfonts.override { fonts = [ "FiraCode" "FantasqueSansMono" ]; })
+      fira-code
+      fira
+      cooper-hewitt
+      ibm-plex
+      iosevka
+      spleen
+      fira-code-symbols
+      powerline-fonts
+      nerdfonts
     ];
 
     fontconfig = {
@@ -189,7 +185,10 @@
   };
 
   hardware = {
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      settings.General.Experimental = true; # battery level feature
+    };
     opengl = {
       enable = true;
       driSupport = true;
