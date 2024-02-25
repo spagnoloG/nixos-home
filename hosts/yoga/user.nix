@@ -1,7 +1,7 @@
 { config, lib, inputs, pkgs, ... }:
 
 {
-  imports = [ ../../modules/default.nix ];
+  imports = [ ../../modules/home/default.nix ];
   config.modules = {
     dunst.enable = true;
     hyprland.enable = true;

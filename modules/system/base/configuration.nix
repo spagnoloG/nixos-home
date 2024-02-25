@@ -13,10 +13,6 @@
 
   programs.zsh.enable = true;
 
-  programs.wireshark.enable = true;
-
-  environment.etc.openvpn.source = "${pkgs.update-resolv-conf}/libexec/openvpn";
-
   # Docker
   virtualisation.docker.enable = true;
 
@@ -189,13 +185,7 @@
       enable = true;
       settings.General.Experimental = true; # battery level feature
     };
-    opengl = {
-      enable = true;
-      driSupport = true;
-    };
   };
-
-  programs.adb.enable = true;
 
   services.blueman.enable = true;
   # Do not touch

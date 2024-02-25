@@ -1,22 +1,32 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
 
-  environment.systemPackages = with pkgs; [
-    acpi
-    pciutils
-    greetd.tuigreet
-    glib-networking
-  ];
+with lib;
+let cfg = config.modules.laptop;
 
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
+in {
+  options.modules.laptop = { enable = mkEnableOption "laptop"; };
+  config = mkIf cfg.enable {
+
+    environment.systemPackages = with pkgs; [
+      acpi
+      pciutils
+      greetd.tuigreet
+      glib-networking
+    ];
+
+    services.auto-cpufreq.enable = true;
+    services.auto-cpufreq.settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
     };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
+
   };
 
 }
+

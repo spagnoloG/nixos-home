@@ -1,29 +1,40 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
 
-  environment.systemPackages = with pkgs; [
-    vulkan-loader
-    vulkan-validation-layers
-    vulkan-tools
-    libva-utils
-    cudatoolkit
-  ];
+with lib;
+let cfg = config.modules.nvidia;
 
-  # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+in {
+  options.modules.nvidia = { enable = mkEnableOption "nvidia"; };
 
-  hardware.nvidia = {
-    nvidiaSettings = true;
-    modesetting.enable = true;
-    nvidiaPersistenced = true;
-    open = false;
-    powerManagement = {
-      enable = false;
-      finegrained = false;
+  config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-tools
+      libva-utils
+      cudatoolkit
+    ];
+
+    # Enable OpenGL
+    hardware.opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
     };
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    hardware.nvidia = {
+      nvidiaSettings = true;
+      modesetting.enable = true;
+      nvidiaPersistenced = true;
+      open = false;
+      powerManagement = {
+        enable = false;
+        finegrained = false;
+      };
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+
   };
+
 }
+

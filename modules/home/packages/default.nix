@@ -47,6 +47,7 @@ in {
       zlib
       jdk
       virt-manager
+      rsync
       # Development
       dbeaver
       libreoffice
