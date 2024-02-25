@@ -3,24 +3,24 @@
 {
   home.stateVersion = "23.11";
   imports = [
-    ./hyprland
-    ./packages
-    ./dunst
-    ./kitty
-    ./waybar
-    ./zsh
-    ./fuzzel
-    ./gtk
-    ./direnv
-    ./kanshi
-    ./git
-    ./gammastep
-    ./vscode
-    ./tmux
-    ./starship
-    ./dconf
-    ./nvim
-    ./alacritty
-    ./brave
+    ./home/hyprland
+    ./home/packages
+    ./home/dunst
+    ./home/kitty
+    ./home/waybar
+    ./home/zsh
+    ./home/fuzzel
+    ./home/gtk
+    ./home/direnv
+    ./home/kanshi
+    ./home/git
+    ./home/gammastep
+    ./home/vscode
+    ./home/tmux
+    ./home/starship
+    ./home/dconf
+    ./home/nvim
+    ./home/alacritty
+    ./home/brave
   ];
 }

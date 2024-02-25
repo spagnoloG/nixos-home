@@ -23,7 +23,7 @@
         pkgs.lib.nixosSystem {
           system = system;
           modules = [
-            ./modules/system/configuration.nix
+            ./modules/system/base/configuration.nix
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             (./. + "/hosts/${hostname}/default.nix")
             home-manager.nixosModules.home-manager

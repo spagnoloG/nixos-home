@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ ../../modules/nvidia/default.nix ../../modules/laptop/default.nix ];
+  imports = [
+    ../../modules/system/nvidia/default.nix
+    ../../modules/system/laptop/default.nix
+  ];
 }

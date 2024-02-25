@@ -19,8 +19,8 @@ in {
     home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
     home.file.".config/hypr/hyprpaper.conf".source = ./hyprpaper.conf;
     home.file.".config/hypr/wallpaper.png".source =
-      ../../pictures/wallpaper.png;
+      ../../../pictures/wallpaper.png;
     home.file.".config/hypr/lock-wallpaper.png".source =
-      ../../pictures/lock-wallpaper.png;
+      ../../../pictures/lock-wallpaper.png;
   };
 }
