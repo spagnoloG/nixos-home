@@ -187,6 +187,13 @@
     };
   };
 
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
   programs.gnupg.agent = {
     enable = true;
     pinentryFlavor = "gtk2";

@@ -42,6 +42,7 @@
     in {
       nixosConfigurations = {
         yoga = mkSystem inputs.nixpkgs "x86_64-linux" "yoga";
+        carbon = mkSystem inputs.nixpkgs "x86_64-linux" "carbon";
       };
     };
 }
