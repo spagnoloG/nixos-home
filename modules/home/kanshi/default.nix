@@ -31,7 +31,7 @@ in {
           outputs = [{
             criteria = "eDP-1";
             mode = "3072x1920@120Hz";
-            scale = 1.3;
+            scale = 1.0;
           }];
         };
 

@@ -23,6 +23,7 @@ in {
         tree = "eza --tree";
         vi = "nvim";
         vim = "nvim";
+        ndevelop = "nix develop -c $SHELL";
         rebuild-os =
           "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.config/home-manager#yoga";
       };

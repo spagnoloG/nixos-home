@@ -28,9 +28,6 @@ in {
           size = 12;
         };
 
-        liveConfigReload = true;
-        dynamicPadding = true;
-
         colors = {
           primary = {
             background = "#1c1e26";
@@ -57,10 +54,6 @@ in {
             focused_match = {
               foreground = "#1c1e26";
               background = "#29d398"; # Horizon Dark green for visibility
-            };
-            footer_bar = {
-              foreground = "#1c1e26";
-              background = "#fab795"; # Horizon Dark yellow for consistency
             };
           };
 

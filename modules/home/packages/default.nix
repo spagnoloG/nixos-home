@@ -158,6 +158,9 @@ in {
       google-chrome
       # colored output in terminal
       grc
+      # Screen recording
+      obs-studio
+      obs-studio-plugins.wlrobs
     ];
   };
 }

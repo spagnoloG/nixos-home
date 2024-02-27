@@ -187,6 +187,11 @@
     };
   };
 
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "gtk2";
+  };
+
   services.blueman.enable = true;
   # Do not touch
   system.stateVersion = "23.11";
