@@ -73,6 +73,7 @@ in {
       stow
       bat
       eza
+      pdfarranger
       # Statistics
       btop
       nvitop

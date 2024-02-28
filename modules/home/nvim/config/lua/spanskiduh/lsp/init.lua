@@ -1,6 +1,10 @@
 -- Check for lsp-zero
-local ok, lsp_zero = pcall(require, 'lsp-zero')
-if not ok then return end
+local ok1, lsp_zero = pcall(require, 'lsp-zero')
+local ok2, mason = pcall(require, 'mason')
+local ok3, mason_lspconfig = pcall(require, 'mason-lspconfig')
+local ok4, cmp = pcall(require, 'cmp')
+
+if not (ok1 and ok2 and ok3 and ok4) then return end
 
 -- Extend lspconfig with lsp-zero's functionalities
 lsp_zero.extend_lspconfig()
@@ -32,8 +36,17 @@ lsp_zero.on_attach(function(client, bufnr)
                    opts)
 end)
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
+mason.setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+
+mason_lspconfig.setup({
     ensure_installed = {'rust_analyzer'},
     handlers = {
         lsp_zero.default_setup
@@ -42,7 +55,6 @@ require('mason-lspconfig').setup({
 })
 
 -- Set up nvim-cmp for completion
-local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = {
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -53,7 +65,10 @@ local cmp_mappings = {
     ['<Tab>'] = nil,
     ['<S-Tab>'] = nil
 }
-cmp.setup({mapping = cmp_mappings, sources = {{name = 'nvim_lsp'}}})
+cmp.setup({
+    mapping = cmp_mappings,
+    sources = {{name = 'nvim_lsp'}, {name = 'path'}}
+})
 
 vim.diagnostic.config({virtual_text = true})
 

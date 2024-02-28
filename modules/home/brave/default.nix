@@ -18,6 +18,7 @@ in {
         "naeaaedieihlkmdajjefioajbbdbdjgp" # Svg Export
         "aapbdbdomjkkjkaonfhkkikfgjllcleb" # Google Translate
         "bkhaagjahfmjljalopjnoealnfndnagc" # Octotree
+        "bhlhnicpbhignbdhedgjhgdocnmhomnp" # ColorZilla
       ];
       commandLineArgs = [
         "--flag-switches-begin"
