@@ -9,6 +9,8 @@ in {
       nodejs
       python311Packages.pynvim
       luaformatter
+      nodePackages.prettier
+      perl536Packages.LatexIndent
     ];
     home.file.".config/nvim" = {
       source = ./config;

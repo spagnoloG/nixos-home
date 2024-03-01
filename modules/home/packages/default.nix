@@ -62,6 +62,8 @@ in {
       transmission-gtk
       xournalpp
       pdftk
+      pdfarranger
+      okular
       pandoc
       texlive.combined.scheme-full
       remmina
@@ -73,7 +75,6 @@ in {
       stow
       bat
       eza
-      pdfarranger
       # Statistics
       btop
       nvitop

@@ -16,14 +16,11 @@
       pkgs = nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
 
-      user = "spagnologasper";
-      hostName = "yoga";
-
-      mkSystem = pkgs: system: hostname:
+      mkDesktopSystem = pkgs: system: hostname: user:
         pkgs.lib.nixosSystem {
           system = system;
           modules = [
-            ./modules/system/base/configuration.nix
+            ./modules/system/base-desktop/configuration.nix
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             (./. + "/hosts/${hostname}/default.nix")
             home-manager.nixosModules.home-manager
@@ -36,13 +33,39 @@
               };
             }
           ];
-          specialArgs = { inherit inputs user hostName; };
+          specialArgs = { inherit inputs user hostname; };
+        };
+
+      mkServerSystem = pkgs: system: hostname: user:
+        pkgs.lib.nixosSystem {
+          system = system;
+          modules = [
+            ./modules/system/base-server/configuration.nix
+            (./. + "/hosts/${hostname}/hardware-configuration.nix")
+            (./. + "/hosts/${hostname}/default.nix")
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                extraSpecialArgs = { inherit inputs user; };
+                users.${user} = (./. + "/hosts/${hostname}/user.nix");
+              };
+            }
+          ];
+          specialArgs = { inherit inputs user hostname; };
         };
 
     in {
       nixosConfigurations = {
-        yoga = mkSystem inputs.nixpkgs "x86_64-linux" "yoga";
-        carbon = mkSystem inputs.nixpkgs "x86_64-linux" "carbon";
+        yoga =
+          mkDesktopSystem inputs.nixpkgs "x86_64-linux" "yoga" "spagnologasper";
+        carbon = mkDesktopSystem inputs.nixpkgs "x86_64-linux" "carbon"
+          "spagnologasper";
+        ml-node =
+          mkServerSystem inputs.nixpkgs "x86_64-linux" "ml-node" "ml-node";
+        ddvic-node = mkServerSystem inputs.nixpkgs "x86_64-linux" "ddvic-node"
+          "ddvic-node";
       };
     };
 }
