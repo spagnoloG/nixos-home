@@ -1,19 +1,7 @@
 { inputs, pkgs, lib, config, python3, ... }:
 
 with lib;
-let
-  cfg = config.modules.packages;
-  pyenv = ps:
-    with ps; [
-      impacket
-      dsinternals
-      pypykatz
-      lsassy
-      pip
-      ldapdomaindump
-      requests
-    ];
-
+let cfg = config.modules.packages;
 in {
   options.modules.packages = { enable = mkEnableOption "packages"; };
   config = mkIf cfg.enable {
@@ -48,6 +36,8 @@ in {
       jdk
       virt-manager
       rsync
+      # Nix tools
+      home-manager
       # Development
       dbeaver
       libreoffice
