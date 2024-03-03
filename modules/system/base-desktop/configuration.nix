@@ -39,7 +39,11 @@
 
   programs.hyprland.xwayland.enable = true;
 
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemuOvmf = true;
+  };
+
   fonts = {
     packages = with pkgs; [
       jetbrains-mono

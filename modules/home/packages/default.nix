@@ -103,7 +103,7 @@ in {
       anki-bin
       # Games
       superTuxKart
-      xonotic 
+      xonotic
       # Security
       steghide
       exiftool
