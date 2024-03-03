@@ -4,6 +4,9 @@ Home-manager and nixos system configuration using flakes!
 
 Use it as a template for your nixos setup:)
 
+![Desktop](./pictures/desktop.png)
+
+
 ## Getting started
 
 Installation steps:

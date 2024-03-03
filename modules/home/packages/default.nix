@@ -103,6 +103,7 @@ in {
       anki-bin
       # Games
       superTuxKart
+      xonotic 
       # Security
       steghide
       exiftool
@@ -153,6 +154,8 @@ in {
       # Screen recording
       obs-studio
       obs-studio-plugins.wlrobs
+      # Virtualization
+      vagrant
     ];
   };
 }
