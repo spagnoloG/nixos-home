@@ -3,10 +3,10 @@
 # to /etc/nixos/configuration.nix instead.
 
 let
-  # RTX 3050
 
   # Use this script to find the IOMMU groups
   # Resource: https://astrid.tech/2022/09/22/0/nixos-gpu-vfio/
+  # Additional resource: https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF
   #!/bin/bash
   #   shopt -s nullglob
   #   for g in $(find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V); do
@@ -19,6 +19,21 @@ let
   # IOMMU Group 12:
   #        01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA107BM [GeForce RTX 3050 Mobile] [10de:25e2] (rev a1)
 
+  # Vagrant passtrough
+  # config.vm.provider :libvirt do |libvirt|
+  #  libvirt.qemu_use_session = false
+  #  # Setup for GPU passthrough
+  #  libvirt.pci :bus => '0x01', :slot => '0x00', :function => '0x0'
+  #  libvirt.nested = true 
+  #  libvirt.kvm_hidden = true
+  #  libvirt.cpu_mode = "host-passthrough"
+  # end
+
+  # Lets fucking go:
+  # When sshd into vagrant box: 00:04.0 VGA compatible controller: NVIDIA Corporation GA107BM [GeForce RTX 3050 Mobile] (rev a1)
+
+  # Setup cuda and cudnn: https://gist.github.com/denguir/b21aa66ae7fb1089655dd9de8351a202
+
   rtx3050_pci = "10de:25e2";
 
 in { config, lib, pkgs, modulesPath, ... }:
@@ -28,20 +43,14 @@ in { config, lib, pkgs, modulesPath, ... }:
 
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [
-    "vfio_pci"
-    "vfio"
-    "vfio_iommu_type1"
-    "vfio_virqfd"
-    "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
-  ];
+  boot.initrd.kernelModules =
+    [ "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.kernelParams = [ "amd_iommu=on" "vfio-pci.ids=${rtx3050_pci}" ];
+  boot.blacklistedKernelModules = [ "nouveau" ];
+  hardware.opengl.enable = true;
 
-  boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
+  #boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
   services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 
   fileSystems."/" = {
