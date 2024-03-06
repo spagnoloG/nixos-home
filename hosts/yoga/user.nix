@@ -12,7 +12,7 @@
     fuzzel.enable = true;
     gtk.enable = true;
     direnv.enable = true;
-    kanshi.enable = true;
+    kanshi.enable = false; # currently bugged on hyprland
     git.enable = true;
     gammastep.enable = false; # Doesn't work on hyprland
     vscode.enable = true;

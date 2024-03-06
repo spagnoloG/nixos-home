@@ -14,7 +14,11 @@
   programs.zsh.enable = true;
 
   # Docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableNvidia = true;
+    enableOnBoot = true;
+  };
 
   services.greetd = {
     enable = true;

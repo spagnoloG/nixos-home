@@ -7,7 +7,10 @@
   # Remove unecessary preinstalled packages
   environment.defaultPackages = [ ];
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableNvidia = true;
+  };
 
   services.openssh = {
     enable = true;

@@ -3,7 +3,7 @@
 {
   imports = [ ../../modules/system/default.nix ];
   config.modules = {
-    laptop.enable = true;
+    laptop.enable = false;
     nvidia.enable = false;
   };
 
