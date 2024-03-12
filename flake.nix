@@ -16,7 +16,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
 
-      mkDesktopSystem = pkgs: system: hostname: user:
+      mkDesktopSystem = pkgs: system: hostname: user: graphical-environment:
         pkgs.lib.nixosSystem {
           system = system;
           modules = [
@@ -33,7 +33,7 @@
               };
             }
           ];
-          specialArgs = { inherit inputs user hostname; };
+          specialArgs = { inherit inputs user hostname graphical-environment; };
         };
 
       mkServerSystem = pkgs: system: hostname: user:
@@ -59,9 +59,10 @@
     in {
       nixosConfigurations = {
         yoga =
-          mkDesktopSystem inputs.nixpkgs "x86_64-linux" "yoga" "spagnologasper";
+          mkDesktopSystem inputs.nixpkgs "x86_64-linux" "yoga" "spagnologasper"
+          "hypr";
         carbon = mkDesktopSystem inputs.nixpkgs "x86_64-linux" "carbon"
-          "spagnologasper";
+          "spagnologasper" "hypr";
         ml-node =
           mkServerSystem inputs.nixpkgs "x86_64-linux" "ml-node" "ml-node";
         ddvic-node = mkServerSystem inputs.nixpkgs "x86_64-linux" "ddvic-node"

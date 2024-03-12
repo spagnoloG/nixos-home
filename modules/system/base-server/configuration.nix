@@ -78,7 +78,9 @@
     networkmanager.enable = true;
     hostName = "${hostname}";
     firewall.enable = false;
-    extraHosts = ""; # For adding hosts.
+    extraHosts = ''
+      127.0.0.1 facebook.com
+    ''; # For adding hosts.
   };
 
   # Set environment variables

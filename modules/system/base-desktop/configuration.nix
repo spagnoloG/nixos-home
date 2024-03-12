@@ -1,11 +1,21 @@
-{ config, pkgs, inputs, lib, user, hostname, ... }:
+{ config, pkgs, inputs, lib, user, hostname, graphical-environment, ... }:
 
 {
+
+  imports = let
+    envConfig = if graphical-environment == "gnome" then
+      ./gnome.nix
+    else if graphical-environment == "hypr" then
+      ./hypr.nix
+    else
+      throw "Unsupported graphical environment";
+  in [ envConfig ];
 
   nixpkgs.config.allowUnfree = true;
 
   # Remove unecessary preinstalled packages
   environment.defaultPackages = [ ];
+  services.teamviewer.enable = true;
 
   environment.sessionVariables = { GTK_USE_PORTAL = "1"; };
 
@@ -20,17 +30,6 @@
     enableOnBoot = true;
   };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command =
-          "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting 'Welcome to NixOS!' --cmd Hyprland";
-        user = "${user}";
-      };
-    };
-  };
-
   services.openssh.enable = true;
   systemd.services.sshd.wantedBy = lib.mkForce [ ];
 
@@ -40,8 +39,6 @@
 
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
-
-  programs.hyprland.xwayland.enable = true;
 
   virtualisation.libvirtd = {
     enable = true;
@@ -68,17 +65,6 @@
     fontconfig = {
       hinting.autohint = true;
       defaultFonts = { emoji = [ "OpenMoji Color" ]; };
-    };
-  };
-
-  xdg = {
-    icons.enable = true;
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gtk
-      ];
     };
   };
 
@@ -145,7 +131,11 @@
     networkmanager.enable = true;
     hostName = "${hostname}";
     firewall.enable = false;
-    extraHosts = ""; # For adding hosts.
+    extraHosts = ''
+      # Fuck these sites
+      #127.0.0.1 www.facebook.com
+      #127.0.0.1 www.linkedin.com
+    ''; # For adding hosts.
   };
 
   # Set environment variables

@@ -28,30 +28,26 @@ in {
           "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.config/home-manager#yoga";
       };
       initExtra = ''
-              export EDITOR='nvim'
+        export EDITOR='nvim'
+        source "$(fzf-share)/key-bindings.zsh"
+        source "$(fzf-share)/completion.zsh"
 
-                  bin_txt() {
-                  curl -X PUT --data "$1" https://p.spanskiduh.dev
-              }
+        bin_txt() {
+            curl -X PUT --data "$1" https://p.spanskiduh.dev
+        }
 
-              bin_file() {
-                  curl -X PUT --data-binary "@$1" https://p.spanskiduh.dev
-              }
+        bin_file() {
+            curl -X PUT --data-binary "@$1" https://p.spanskiduh.dev
+        }
 
-              cleanup-os() {
-        	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
-        	sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system
-        	sudo nix-collect-garbage -d
-        	sudo nix-store --optimize
-        	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+        cleanup-os() {
+            sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+            sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system
+            sudo nix-collect-garbage -d
+            sudo nix-store --optimize
+            sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 
-              }
-
-              # Gpg tty
-              GPG_TTY=$(tty)
-              export GPG_TTY
-              export FUNCNEST=500
-
+        }
       '';
       oh-my-zsh = {
         enable = true;

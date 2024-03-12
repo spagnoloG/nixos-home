@@ -156,6 +156,8 @@ in {
       obs-studio-plugins.wlrobs
       # Virtualization
       vagrant
+      # Remote access
+      teamviewer
     ];
   };
 }

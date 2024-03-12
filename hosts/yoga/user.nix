@@ -3,7 +3,7 @@
 {
   imports = [ ../../modules/home/default.nix ];
   config.modules = {
-    dunst.enable = true;
+    dunst.enable = false;
     hyprland.enable = true;
     kitty.enable = true;
     packages.enable = true;
