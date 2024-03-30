@@ -22,6 +22,7 @@
 
   boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
   services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/0899771d-54fe-4a08-917d-4e31fc6b4d3d";

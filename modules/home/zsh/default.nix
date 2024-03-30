@@ -26,6 +26,7 @@ in {
         ndevelop = "nix develop -c $SHELL";
         rebuild-os =
           "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.config/home-manager#yoga";
+        opdf = "okular $(find ~/  -type f -iname '\*pdf' | fzf)";
       };
       initExtra = ''
         export EDITOR='nvim'

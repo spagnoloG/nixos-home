@@ -29,3 +29,4 @@ format:
 	@echo "Formatting Nix & Lua files..."
 	@find . -type f -iname "*.nix" -exec nixfmt {} \;
 	@find . -type f -iname "*.lua" -exec lua-format --in-place {} \;
+

@@ -36,6 +36,7 @@ in {
         pr-clean =
           "-c sequence.editor=true rebase --interactive --autosquash --rerere-autoupdate --empty drop --no-keep-empty --fork-point upstream/HEAD";
         pr-update = "pull --rebase=merges upstream HEAD";
+        unadd = "reset HEAD --";
       };
 
       extraConfig = {
