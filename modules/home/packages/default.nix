@@ -12,6 +12,7 @@ in {
       gnupg
       libnotify
       git
+      tig
       file
       wget
       gcc
@@ -158,6 +159,13 @@ in {
       vagrant
       # Remote access
       teamviewer
+      # Singularity
+      singularity 
+      # Displays
+      nwg-displays
+      wlr-randr
+      # VPN ls
+      openconnect
     ];
   };
 }
