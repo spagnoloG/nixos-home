@@ -12,7 +12,8 @@
   in [ envConfig ];
 
   nixpkgs.config.allowUnfree = true;
-
+  nixpkgs.config.allowUnsupportedSystem = true;
+    
   # Remove unecessary preinstalled packages
   environment.defaultPackages = [ ];
   services.teamviewer.enable = true;
@@ -191,7 +192,7 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "gtk2";
+    pinentryPackage = pkgs.pinentry;
   };
 
   services.blueman.enable = true;
